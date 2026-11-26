@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paket Kecil Spesial Untukmu ✨</title>
+
+  <!-- Google Fonts: Playfair Display, Pacifico, dan Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Konfigurasi Palet Warna & Tipografi Pastel -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+            handwriting: ['Pacifico', 'cursive'],
+          },
+          colors: {
+            warmcream: '#FFF8F6',
+            blushpink: '#FADADD',
+            rosegold: '#E8A598',
+            rosegolddark: '#C97B6E',
+            warmbrown: '#5C4742',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Pengaturan dasar responsif & bebas scroll horizontal */
+    html,
+    body {
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-tap-highlight-color: transparent;
+      background-color: #FFF8F6;
+      color: #5C4742;
+    }
+
+    /* Latar belakang gradasi pastel hangat (Warm Cream, Blush Pink, Rose Gold) */
+    .pastel-canvas-bg {
+      background:
+        radial-gradient(circle at 12% 18%, rgba(250, 218, 221, 0.75) 0%, transparent 45%),
+        radial-gradient(circle at 88% 15%, rgba(232, 165, 152, 0.35) 0%, transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(250, 218, 221, 0.65) 0%, transparent 50%),
+        linear-gradient(145deg, #FFF8F6 0%, #FDF0EE 52%, #FFF8F6 100%);
+    }
+
+    /* Animasi denyut lembut pada segel hati amplop */
+    @keyframes heartSealPulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.16);
+      }
+    }
+    .animate-heart-seal {
+      transform-origin: 50px 51px;
+      animation: heartSealPulse 1.8s ease-in-out infinite;
+    }
+
+    /* Animasi amplop mengambang halus */
+    @keyframes envelopeFloat {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-7px);
+      }
+    }
+    .animate-envelope-float {
+      animation: envelopeFloat 3s ease-in-out infinite;
+    }
+
+    /* Animasi partikel latar melayang perlahan */
+    @keyframes driftSlow {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+        opacity: 0.45;
+      }
+      50% {
+        transform: translateY(-16px) translateX(6px) rotate(10deg);
+        opacity: 0.85;
+      }
+    }
+    .bg-particle {
+      animation: driftSlow var(--float-dur, 6s) ease-in-out infinite;
+      animation-delay: var(--float-delay, 0s);
+    }
+
+    /* Animasi masuk halus antar layar */
+    @keyframes smoothReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .stage-reveal {
+      animation: smoothReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Animasi nyala api lilin bergoyang alami */
+    @keyframes candleFlameSway {
+      0%, 100% {
+        transform: translateX(-50%) scale(1) rotate(-2deg);
+        border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+      }
+      30% {
+        transform: translateX(-52%) scale(1.05, 0.96) rotate(2.5deg);
+      }
+      60% {
+        transform: translateX(-48%) scale(0.96, 1.05) rotate(-1.5deg);
+      }
+      85% {
+        transform: translateX(-51%) scale(1.03, 0.98) rotate(2deg);
+      }
+    }
+    .candle-flame {
+      animation: candleFlameSway 1.25s ease-in-out infinite;
+      transform-origin: bottom center;
+      box-shadow:
+        0 0 18px 6px rgba(255, 193, 94, 0.65),
+        0 0 34px 12px rgba(232, 165, 152, 0.4);
+    }
+
+    /* Animasi asap halus saat lilin ditiup */
+    @keyframes smokeFloatUp {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, 0) scale(0.45);
+      }
+      25% {
+        opacity: 0.75;
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-32%, -64px) scale(1.9);
+      }
+    }
+    .smoke-puff-1 {
+      animation: smokeFloatUp 1.8s ease-out forwards;
+    }
+    .smoke-puff-2 {
+      animation: smokeFloatUp 2.1s ease-out 0.25s forwards;
+    }
+
+    /* Animasi hujan emoji hati & bintang saat klaim voucher */
+    @keyframes emojiShowerUp {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5) rotate(0deg);
+      }
+      15% {
+        opacity: 1;
+      }
+      85% {
+        opacity: 0.9;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-88vh) scale(1.2) rotate(var(--spin, 20deg));
+      }
+    }
+    .shower-emoji {
+      position: fixed;
+      bottom: -40px;
+      pointer-events: none;
+      z-index: 60;
+      animation: emojiShowerUp var(--dur, 3.4s) cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    }
+
+    /* Lekukan tiket kiri-kanan pada Voucher Traktiran */
+    .ticket-voucher {
+      position: relative;
+    }
+    .ticket-voucher::before,
+    .ticket-voucher::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 22px;
+      height: 22px;
+      background-color: #FFF8F6;
+      border-radius: 9999px;
+      transform: translateY(-50%);
+      border: 1.5px dashed #E8A598;
+    }
+    .ticket-voucher::before {
+      left: -12px;
+    }
+    .ticket-voucher::after {
+      right: -12px;
+    }
+  </style>
+</head>
+<body class="pastel-canvas-bg min-h-screen text-warmbrown font-sans selection:bg-blushpink selection:text-warmbrown relative flex flex-col justify-center items-center p-4 sm:p-6">
+
+  <!-- Canvas Confetti Pastel Full-Screen -->
+  <canvas id="confetti-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-50"></canvas>
+
+  <!-- Wadah Hujan Emoji Hati & Bintang -->
+  <div id="emoji-shower-container" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
+
+  <!-- Partikel Hati & Kilau Lembut Melayang di Latar Belakang -->
+  <div aria-hidden="true" class="fixed inset-0 pointer-events-none overflow-hidden z-0 select-none">
+    <span class="bg-particle absolute top-[10%] left-[10%] text-rosegold text-xl" style="--float-dur: 5.5s; --float-delay: 0s;">♡</span>
+    <span class="bg-particle absolute top-[18%] right-[14%] text-rosegolddark/60 text-lg" style="--float-dur: 6.8s; --float-delay: 1.1s;">✦</span>
+    <span class="bg-particle absolute top-[45%] left-[6%] text-rosegold/80 text-base" style="--float-dur: 7.2s; --float-delay: 2s;">✨</span>
+    <span class="bg-particle absolute top-[62%] right-[8%] text-rosegold text-xl" style="--float-dur: 6.1s; --float-delay: 0.6s;">♡</span>
+    <span class="bg-particle absolute bottom-[14%] left-[16%] text-rosegolddark/60 text-lg" style="--float-dur: 6.5s; --float-delay: 1.7s;">✦</span>
+    <span class="bg-particle absolute bottom-[18%] right-[18%] text-rosegold text-base" style="--float-dur: 5.8s; --float-delay: 2.4s;">✿</span>
+  </div>
+
+  <!-- =====================================================================
+       LAYAR 1: AMPLOP KEJUTAN (PEMBUKA)
+       ===================================================================== -->
+  <main id="screen-envelope" class="relative z-10 w-full max-w-md mx-auto stage-reveal">
+    <div class="bg-white/85 backdrop-blur-md border border-blushpink rounded-3xl shadow-[0_20px_50px_rgba(232,165,152,0.22)] p-7 sm:p-10 text-center">
+      
+      <!-- Label Kecil Atas -->
+      <div class="inline-flex items-center gap-1.5 bg-warmcream border border-blushpink text-rosegolddark text-xs font-semibold px-3.5 py-1 rounded-full mb-6">
+        <span>🌷</span>
+        <span>Untuk Seseorang yang Spesial, Selamat Ulang Tahun.</span>
+      </div>
+
+      <!-- Amplop Pastel Interaktif dengan Segel Hati Berdenyut -->
+      <div class="flex justify-center mb-6">
+        <button
+          type="button"
+          onclick="openEnvelope()"
+          aria-label="Buka amplop kejutan"
+          class="animate-envelope-float group relative w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-blushpink/70 via-warmcream to-rosegold/30 flex items-center justify-center shadow-inner border border-white cursor-pointer focus:outline-none transition-transform duration-300 hover:scale-105 active:scale-95"
+        >
+          <svg class="w-20 h-20 sm:w-24 sm:h-24 drop-shadow-sm" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Badan Amplop -->
+            <rect x="12" y="26" width="76" height="52" rx="11" fill="#FFF8F6" stroke="#E8A598" stroke-width="3.5" />
+            <!-- Lipatan Bawah Amplop -->
+            <path d="M15 75L42 52C46.7 48.2 53.3 48.2 58 52L85 75" stroke="#FADADD" stroke-width="3.2" stroke-linecap="round" />
+            <!-- Tutup Atas Amplop -->
+            <path d="M15 29L44.5 53.5C47.7 56.1 52.3 56.1 55.5 53.5L85 29" fill="#FADADD" stroke="#E8A598" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+            <!-- Segel Hati Berdenyut -->
+            <path
+              class="animate-heart-seal"
+              d="M50 64C50 64 37.5 56 37.5 48C37.5 44.1 40.5 41.3 44.1 41.3C46.5 41.3 48.7 42.6 50 44.7C51.3 42.6 53.5 41.3 55.9 41.3C59.5 41.3 62.5 44.1 62.5 48C62.5 56 50 64 50 64Z"
+              fill="#D96B7E"
+            />
+          </svg>
+          <span class="absolute top-2.5 right-3.5 text-rosegolddark text-base">✨</span>
+        </button>
+      </div>
+
+      <!-- Teks Pembuka Manis -->
+      <h1 class="font-serif text-xl sm:text-2xl font-bold text-warmbrown leading-relaxed mb-7 px-1">
+        “Ada pesan kecil spesial buat Fatarisa di hari ini... ✨”
+      </h1>
+
+      <!-- Tombol Buka Sekarang -->
+      <button
+        type="button"
+        onclick="openEnvelope()"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-rosegold to-rosegolddark hover:opacity-95 text-white font-bold text-base sm:text-lg px-8 py-3.5 rounded-full shadow-[0_10px_25px_rgba(201,123,110,0.35)] hover:shadow-[0_14px_30px_rgba(201,123,110,0.45)] transform transition-all duration-300 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+      >
+        <span>Buka Sekarang 💌</span>
+      </button>
+    </div>
+  </main>
+
+  <!-- =====================================================================
+       LAYAR 2: MAKE A WISH (TIUP LILIN KUE ULANG TAHUN)
+       ===================================================================== -->
+  <section id="screen-cake" class="hidden relative z-10 w-full max-w-md mx-auto">
+    <div class="bg-white/85 backdrop-blur-md border border-blushpink rounded-3xl shadow-[0_20px_50px_rgba(232,165,152,0.22)] p-7 sm:p-10 text-center">
+      
+      <!-- Label Tahap -->
+      <div class="inline-flex items-center gap-1.5 bg-warmcream border border-blushpink text-rosegolddark text-xs font-semibold px-3.5 py-1 rounded-full mb-5">
+        <span>🎂</span>
+        <span>Make a Wish Time</span>
+      </div>
+
+      <!-- Instruksi Make a Wish -->
+      <h2 id="wish-heading" class="font-serif text-lg sm:text-xl font-bold text-warmbrown leading-relaxed mb-8 px-1">
+        Sebelum baca pesannya, pejamkan mata sebentar dan buat harapan terbaikmu... lalu tiup lilinnya ya! ✨
+      </h2>
+
+      <!-- Ilustrasi Kue Ulang Tahun Pastel Berlapis -->
+      <div class="relative flex flex-col items-center justify-end pt-14 pb-3 my-1 select-none">
+        
+        <!-- Lilin & Nyala Api (Bisa diklik langsung) -->
+        <button
+          type="button"
+          onclick="blowCandle()"
+          aria-label="Tiup lilin"
+          class="group relative flex flex-col items-center focus:outline-none cursor-pointer px-8 pt-6 -mb-1 z-20"
+        >
+          <!-- Efek Asap Saat Lilin Padam -->
+          <div id="candle-smoke" class="hidden absolute -top-2 left-1/2 pointer-events-none">
+            <div class="smoke-puff-1 w-4 h-4 rounded-full bg-gray-300/75 blur-[3px]"></div>
+            <div class="smoke-puff-2 w-3 h-3 rounded-full bg-gray-200/80 blur-[2px] -mt-2"></div>
+          </div>
+
+          <!-- Nyala Api Lilin -->
+          <div
+            id="candle-flame"
+            class="candle-flame absolute -top-3 left-1/2 w-5 h-8 bg-gradient-to-t from-amber-500 via-yellow-300 to-white transition-all duration-300 group-hover:scale-110"
+          >
+            <div class="w-2 h-3.5 bg-white/95 rounded-full mx-auto mt-3 blur-[0.5px]"></div>
+          </div>
+
+          <!-- Sumbu Lilin -->
+          <div class="w-1 h-2.5 bg-warmbrown rounded-t-full"></div>
+
+          <!-- Batang Lilin Pastel -->
+          <div class="w-4 h-12 rounded-t-md bg-gradient-to-b from-blushpink via-white to-blushpink border border-rosegold/70 shadow-xs overflow-hidden flex flex-col justify-evenly">
+            <div class="w-full h-1.5 bg-rosegold -rotate-12"></div>
+            <div class="w-full h-1.5 bg-rosegold -rotate-12"></div>
+            <div class="w-full h-1.5 bg-rosegold -rotate-12"></div>
+          </div>
+        </button>
+
+        <!-- Lapisan Kue Atas -->
+        <div class="relative w-36 h-14 bg-gradient-to-b from-blushpink to-[#F5C2C7] rounded-t-2xl border-x border-t border-rosegold/50 shadow-xs z-10 overflow-hidden">
+          <!-- Krim Leleh Warm Cream -->
+          <div class="flex w-full">
+            <div class="w-6 h-5 bg-warmcream rounded-b-full"></div>
+            <div class="w-6 h-7 bg-warmcream rounded-b-full"></div>
+            <div class="w-6 h-4 bg-warmcream rounded-b-full"></div>
+            <div class="w-6 h-6 bg-warmcream rounded-b-full"></div>
+            <div class="w-6 h-5 bg-warmcream rounded-b-full"></div>
+            <div class="w-6 h-6 bg-warmcream rounded-b-full"></div>
+          </div>
+          <!-- Sprinkle Pastel -->
+          <span class="absolute bottom-3 left-5 w-2 h-1 bg-rosegolddark rounded-full rotate-45"></span>
+          <span class="absolute bottom-4 left-14 w-2 h-1 bg-amber-400 rounded-full -rotate-12"></span>
+          <span class="absolute bottom-2.5 right-12 w-2 h-1 bg-pink-400 rounded-full rotate-12"></span>
+          <span class="absolute bottom-4 right-5 w-2 h-1 bg-rosegold rounded-full -rotate-45"></span>
+        </div>
+
+        <!-- Lapisan Kue Bawah -->
+        <div class="relative w-52 h-16 bg-gradient-to-b from-warmcream to-[#F7EAE6] rounded-t-2xl border-x border-t border-rosegold/50 shadow-sm z-10 overflow-hidden">
+          <!-- Krim Leleh Blush Pink -->
+          <div class="flex w-full">
+            <div class="w-7 h-5 bg-blushpink rounded-b-full"></div>
+            <div class="w-8 h-7 bg-blushpink rounded-b-full"></div>
+            <div class="w-7 h-4 bg-blushpink rounded-b-full"></div>
+            <div class="w-8 h-6 bg-blushpink rounded-b-full"></div>
+            <div class="w-7 h-5 bg-blushpink rounded-b-full"></div>
+            <div class="w-8 h-7 bg-blushpink rounded-b-full"></div>
+            <div class="w-7 h-4 bg-blushpink rounded-b-full"></div>
+          </div>
+          <!-- Pita Rose Gold Tengah -->
+          <div class="absolute bottom-4 inset-x-0 h-2 bg-rosegold/40"></div>
+          <div class="absolute bottom-2 left-1/2 -translate-x-1/2 text-rosegolddark text-xs">♥</div>
+        </div>
+
+        <!-- Piring Kue -->
+        <div class="w-64 h-3.5 bg-gradient-to-r from-blushpink/70 via-white to-blushpink/70 rounded-full border border-blushpink shadow-sm"></div>
+      </div>
+
+      <!-- Tombol Tiup Lilin -->
+      <div class="mt-6">
+        <button
+          id="blow-candle-btn"
+          type="button"
+          onclick="blowCandle()"
+          class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-rosegold to-rosegolddark hover:opacity-95 text-white font-bold text-sm sm:text-base px-7 py-3 rounded-full shadow-[0_8px_22px_rgba(201,123,110,0.3)] transform transition-all duration-300 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+        >
+          <span>Tiup Lilin 🌬️🕯️</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       LAYAR 3: KARTU UCAPAN UTAMA DENGAN BINGKAI POLAROID & VOUCHER
+       ===================================================================== -->
+  <section id="screen-card" class="hidden relative z-10 w-full max-w-lg mx-auto my-4">
+    <div class="relative bg-white/90 backdrop-blur-md border border-blushpink rounded-3xl shadow-[0_24px_60px_rgba(201,123,110,0.22)] p-6 sm:p-9">
+      
+      <!-- Tombol Kecil Pemutar Ulang Melodi Kotak Musik di Pojok Kartu -->
+      <button
+        type="button"
+        onclick="replayMusicBox()"
+        title="Putar ulang melodi kotak musik"
+        aria-label="Putar ulang melodi kotak musik"
+        class="absolute top-4 right-4 z-20 bg-warmcream hover:bg-blushpink/60 text-rosegolddark border border-blushpink rounded-full px-3 py-1.5 text-xs font-semibold shadow-2xs flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer"
+      >
+        <span>🎵</span>
+        <span class="hidden sm:inline">Melodi</span>
+      </button>
+
+      <!-- =================================================================
+           BINGKAI POLAROID KLASIK (TANPA TOMBOL UPLOAD)
+           ================================================================= -->
+      <div class="flex flex-col items-center mt-3 mb-7">
+        <div class="relative bg-white p-3.5 pb-5 sm:p-4 sm:pb-6 rounded-2xl shadow-[0_14px_34px_rgba(92,71,66,0.13)] border border-blushpink/80 w-full max-w-[290px] sm:max-w-[320px] transform -rotate-2 hover:rotate-0 transition-transform duration-500">
+          
+          <!-- Selotip Pastel Estetik di Atas Polaroid -->
+          <div aria-hidden="true" class="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 bg-blushpink/80 rounded-sm rotate-1 border border-white/70 shadow-2xs"></div>
+
+          <!-- Wadah Foto 4:3 -->
+          <div class="w-full aspect-[4/3] rounded-xl overflow-hidden bg-warmcream border border-blushpink/60">
+            
+            <!-- GANTI FOTO DI SINI: Ubah "foto-dia.jpg" menjadi nama file foto (letakkan di folder yang sama dengan file HTML ini) atau tempel link URL foto -->
+            <img
+              id="foto-utama"
+              src="foto-dia.jpg"
+              alt="Foto Spesial"
+              onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Cdefs%3E%3ClinearGradient id=%22bg%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop offset=%220%25%22 stop-color=%22%23FFF8F6%22/%3E%3Cstop offset=%2250%25%22 stop-color=%22%23FADADD%22/%3E%3Cstop offset=%22100%25%22 stop-color=%22%23F5C6CE%22/%3E%3C/linearGradient%3E%3ClinearGradient id=%22hill%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22%3E%3Cstop offset=%220%25%22 stop-color=%22%23E8A598%22 stop-opacity=%220.45%22/%3E%3Cstop offset=%22100%25%22 stop-color=%22%23D4877A%22 stop-opacity=%220.65%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%22400%22 height=%22300%22 fill=%22url(%23bg)%22/%3E%3Ccircle cx=%22310%22 cy=%2272%22 r=%2238%22 fill=%22%23FFF8F6%22 fill-opacity=%220.75%22/%3E%3Ccircle cx=%22310%22 cy=%2272%22 r=%2224%22 fill=%22%23FFF8F6%22/%3E%3Cpath d=%22M42 106C42 96 50 88 60 88C63 88 66 88.8 68.5 90.2C72 82 80 76 89.5 76C102 76 112 86 112 98.5C112 99.4 111.9 100.2 111.8 101C119 102.5 124.5 109 124.5 116.8C124.5 125.7 117.3 133 108.3 133H58C49.2 133 42 125.8 42 117C42 112.9 43.6 109.1 46.2 106.3Z%22 fill=%22%23FFF8F6%22 fill-opacity=%220.9%22/%3E%3Cpath d=%22M0 220C90 185 175 192 265 224C320 242 365 232 400 214V300H0V220Z%22 fill=%22url(%23hill)%22/%3E%3Cpath d=%22M200 205C197 182 204 166 200 146%22 stroke=%22%23C97B6E%22 stroke-width=%222.2%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M200 146C200 146 164 124 164 100C164 88.5 173 80 183.8 80C190.7 80 196.7 83.7 200 89.4C203.3 83.7 209.3 80 216.2 80C227 80 236 88.5 236 100C236 124 200 146 200 146Z%22 fill=%22%23E07A8C%22/%3E%3Cellipse cx=%22181%22 cy=%2297%22 rx=%224.5%22 ry=%228%22 transform=%22rotate(-25 181 97)%22 fill=%22%23FFF8F6%22 fill-opacity=%220.65%22/%3E%3Ctext x=%2292%22 y=%2264%22 fill=%22%23C97B6E%22 font-size=%2218%22%3E%E2%9C%A6%3C/text%3E%3Ctext x=%22264%22 y=%22138%22 fill=%22%23E07A8C%22 font-size=%2216%22%3E%E2%99%A1%3C/text%3E%3Ctext x=%22126%22 y=%22178%22 fill=%22%23C97B6E%22 font-size=%2215%22%3E%E2%9C%A6%3C/text%3E%3Ctext x=%22316%22 y=%22172%22 fill=%22%23C97B6E%22 font-size=%2216%22%3E%E2%99%A1%3C/text%3E%3C/svg%3E';"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- GANTI CAPTION POLAROID DI SINI: Ubah teks tulisan tangan di bawah foto sesuai keinginanmu -->
+          <div class="mt-4 text-center px-1">
+            <p class="font-handwriting text-lg sm:text-xl text-warmbrown leading-relaxed">
+              Selalu punya alasan buat bikin hari lebih cerah ✨
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- =================================================================
+           KATA-KATA UCAPAN ULANG TAHUN
+           ================================================================= -->
+      <div class="text-center space-y-4 mb-8 px-1 sm:px-3">
+        <!-- GANTI NAMA PANGGILAN GEBETAN DI SINI: Ubah "Kamu" menjadi nama panggilannya -->
+        <h1 class="font-serif text-2xl sm:text-3xl font-bold text-warmbrown tracking-tight">
+          Selamat Ulang Tahun, Fatarisa! 🌷
+        </h1>
+
+        <div class="w-16 h-1 bg-gradient-to-r from-blushpink via-rosegold to-blushpink rounded-full mx-auto"></div>
+
+        <!-- GANTI ISI PESAN UCAPAN DI SINI JIKA INGIN MENYESUAIKAN -->
+        <div class="space-y-3.5 text-sm sm:text-base text-warmbrown/90 leading-relaxed font-medium">
+          <p>
+            Selamat bertambah usia ya! yah walaupun telat banget ngucapinnya, Semoga di tahun yang baru ini, langkahmu selalu dimudahkan dan semua doa baik yang sering kamu simpan dalam hati satu per satu menemukan jalannya untuk terwujud.
+          </p>
+          <p>
+            Jujur, terima kasih ya sudah hadir dan jadi salah satu alasan kenapa hari-hari biasaku terasa jauh lebih hangat dan menyenangkan. Entah kenapa, ngobrol sama kamu atau sekadar lihat kamu tersenyum itu selalu berhasil bikin suasana hati ikut membaik.
+          </p>
+          <p>
+            Sehat terus, bahagia terus, dan jangan lupa kalau di sini ada seseorang yang selalu ikut senang setiap kali melihatmu tertawa. ✨
+          </p>
+        </div>
+      </div>
+
+      <!-- =================================================================
+           VOUCHER TRAKTIRAN ULANG TAHUN INTERAKTIF
+           ================================================================= -->
+      <div class="ticket-voucher bg-gradient-to-br from-warmcream via-blushpink/45 to-warmcream border-2 border-dashed border-rosegold rounded-2xl p-5 sm:p-6 text-center shadow-2xs">
+        <span class="inline-block bg-white text-rosegolddark text-[11px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full border border-blushpink mb-2">
+          Special Birthday Ticket
+        </span>
+
+        <h3 class="font-serif text-lg sm:text-xl font-bold text-warmbrown">
+          Voucher Traktiran Ulang Tahun, Buat kamu Risa 🎟️
+        </h3>
+
+        <p class="text-xs sm:text-sm text-rosegolddark font-semibold mt-1.5 mb-4 px-2">
+          1x Traktiran Bebas Pilih: Kopi, Es Krim, atau Makan Enak ✨
+        </p>
+
+        <!-- Tombol Klaim Voucher -->
+        <button
+          id="claim-voucher-btn"
+          type="button"
+          onclick="claimVoucher()"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-rosegold to-rosegolddark hover:opacity-95 text-white font-bold text-sm sm:text-base px-6 py-3 rounded-full shadow-[0_8px_20px_rgba(201,123,110,0.3)] hover:shadow-[0_12px_25px_rgba(201,123,110,0.4)] transform transition-all duration-300 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+        >
+          <span id="claim-btn-label">Klaim Voucher 💖</span>
+        </button>
+
+        <!-- Status Voucher Setelah Diklaim -->
+        <div
+          id="voucher-status-box"
+          class="hidden mt-4 bg-white/95 border border-blushpink rounded-xl p-3.5 text-xs sm:text-sm text-warmbrown shadow-2xs"
+        >
+          <p class="font-bold text-rosegolddark">
+            Berhasil Diklaim! Screenshot layar ini &amp; kirim ke aku ya 😉
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       JAVASCRIPT: WEB AUDIO MUSIC BOX, CONFETTI, TRANSISI & VOUCHER
+       ===================================================================== -->
+  <script>
+    let audioCtx = null;
+    let isCandleBlown = false;
+    let isVoucherClaimed = false;
+
+    // -------------------------------------------------------------------
+    // 1. WEB AUDIO API: MELODI KOTAK MUSIK LEMBUT (TANPA FILE EKSTERNAL)
+    // -------------------------------------------------------------------
+    function ensureAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    /**
+     * Memainkan satu denting nada lembut ala kotak musik (music box)
+     */
+    function playMusicBoxTone(frequency, startTime, duration) {
+      if (!audioCtx) return;
+
+      const mainOsc = audioCtx.createOscillator();
+      const overtoneOsc = audioCtx.createOscillator();
+      const mainGain = audioCtx.createGain();
+      const overtoneGain = audioCtx.createGain();
+
+      mainOsc.type = 'sine';
+      mainOsc.frequency.setValueAtTime(frequency, startTime);
+
+      overtoneOsc.type = 'triangle';
+      overtoneOsc.frequency.setValueAtTime(frequency * 2, startTime);
+      overtoneGain.gain.setValueAtTime(0.05, startTime);
+
+      mainGain.gain.setValueAtTime(0.0001, startTime);
+      mainGain.gain.exponentialRampToValueAtTime(0.18, startTime + 0.025);
+      mainGain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration + 0.35);
+
+      mainOsc.connect(mainGain);
+      overtoneOsc.connect(overtoneGain);
+      overtoneGain.connect(mainGain);
+      mainGain.connect(audioCtx.destination);
+
+      mainOsc.start(startTime);
+      overtoneOsc.start(startTime);
+      mainOsc.stop(startTime + duration + 0.4);
+      overtoneOsc.stop(startTime + duration + 0.4);
+    }
+
+    /**
+     * Memainkan lagu "Happy Birthday" dengan tempo lembut & hangat
+     */
+    function playHappyBirthdayMelody() {
+      try {
+        ensureAudioContext();
+        if (!audioCtx) return;
+
+        const G4 = 392.0;
+        const A4 = 440.0;
+        const B4 = 493.88;
+        const C5 = 523.25;
+        const D5 = 587.33;
+        const E5 = 659.25;
+        const F5 = 698.46;
+        const G5 = 783.99;
+
+        const beat = 0.36;
+        const notes = [
+          // Baris 1: Happy Birthday to you
+          { f: G4, d: 0.75 * beat },
+          { f: G4, d: 0.25 * beat },
+          { f: A4, d: 1.0 * beat },
+          { f: G4, d: 1.0 * beat },
+          { f: C5, d: 1.0 * beat },
+          { f: B4, d: 2.0 * beat },
+
+          // Baris 2: Happy Birthday to you
+          { f: G4, d: 0.75 * beat },
+          { f: G4, d: 0.25 * beat },
+          { f: A4, d: 1.0 * beat },
+          { f: G4, d: 1.0 * beat },
+          { f: D5, d: 1.0 * beat },
+          { f: C5, d: 2.0 * beat },
+
+          // Baris 3: Happy Birthday dear kamu
+          { f: G4, d: 0.75 * beat },
+          { f: G4, d: 0.25 * beat },
+          { f: G5, d: 1.0 * beat },
+          { f: E5, d: 1.0 * beat },
+          { f: C5, d: 1.0 * beat },
+          { f: B4, d: 1.0 * beat },
+          { f: A4, d: 2.0 * beat },
+
+          // Baris 4: Happy Birthday to you
+          { f: F5, d: 0.75 * beat },
+          { f: F5, d: 0.25 * beat },
+          { f: E5, d: 1.0 * beat },
+          { f: C5, d: 1.0 * beat },
+          { f: D5, d: 1.0 * beat },
+          { f: C5, d: 2.4 * beat },
+        ];
+
+        let t = audioCtx.currentTime + 0.08;
+        notes.forEach((n) => {
+          playMusicBoxTone(n.f, t, n.d);
+          t += n.d;
+        });
+      } catch (err) {
+        console.warn('Web Audio API tidak dapat dijalankan:', err);
+      }
+    }
+
+    function replayMusicBox() {
+      playHappyBirthdayMelody();
+      triggerConfetti(60);
+    }
+
+    /**
+     * Denting nada manis singkat saat voucher diklaim
+     */
+    function playVoucherChime() {
+      try {
+        ensureAudioContext();
+        if (!audioCtx) return;
+        const chord = [523.25, 659.25, 783.99, 1046.5];
+        let t = audioCtx.currentTime + 0.02;
+        chord.forEach((freq) => {
+          playMusicBoxTone(freq, t, 0.22);
+          t += 0.1;
+        });
+      } catch (err) {
+        console.warn('Chime gagal diputar:', err);
+      }
+    }
+
+    // -------------------------------------------------------------------
+    // 2. LEDAKAN CONFETTI PASTEL (CANVAS RESPONSIF)
+    // -------------------------------------------------------------------
+    const confettiCanvas = document.getElementById('confetti-canvas');
+    const confettiCtx = confettiCanvas.getContext('2d');
+    let particles = [];
+    let animFrameId = null;
+
+    function resizeCanvas() {
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function triggerConfetti(amount = 140) {
+      const palette = [
+        '#FADADD', // Blush Pink
+        '#E8A598', // Rose Gold
+        '#C97B6E', // Deep Rose Gold
+        '#F7D08A', // Warm Gold
+        '#F2A6B8', // Soft Pink
+        '#FFF8F6', // Warm Cream
+      ];
+
+      for (let i = 0; i < amount; i++) {
+        particles.push({
+          x: Math.random() * confettiCanvas.width,
+          y: -20 - Math.random() * (confettiCanvas.height * 0.35),
+          w: 7 + Math.random() * 7,
+          h: 4 + Math.random() * 6,
+          color: palette[Math.floor(Math.random() * palette.length)],
+          vx: (Math.random() - 0.5) * 3.6,
+          vy: 2.3 + Math.random() * 3.8,
+          angle: Math.random() * 360,
+          vAngle: (Math.random() - 0.5) * 8,
+          alpha: 1,
+        });
+      }
+
+      if (!animFrameId) {
+        renderConfetti();
+      }
+    }
+
+    function renderConfetti() {
+      confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.angle += p.vAngle;
+        p.vx += Math.sin(p.y * 0.02) * 0.04;
+
+        if (p.y > confettiCanvas.height * 0.85) {
+          p.alpha -= 0.02;
+        }
+
+        confettiCtx.save();
+        confettiCtx.globalAlpha = Math.max(0, p.alpha);
+        confettiCtx.translate(p.x, p.y);
+        confettiCtx.rotate((p.angle * Math.PI) / 180);
+        confettiCtx.fillStyle = p.color;
+        confettiCtx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        confettiCtx.restore();
+      });
+
+      particles = particles.filter(
+        (p) => p.y < confettiCanvas.height + 30 && p.alpha > 0
+      );
+
+      if (particles.length > 0) {
+        animFrameId = requestAnimationFrame(renderConfetti);
+      } else {
+        animFrameId = null;
+        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      }
+    }
+
+    // -------------------------------------------------------------------
+    // 3. ALUR PERPINDAHAN LAYAR (LAYAR 1 -> LAYAR 2 -> LAYAR 3)
+    // -------------------------------------------------------------------
+    function openEnvelope() {
+      ensureAudioContext();
+
+      const screen1 = document.getElementById('screen-envelope');
+      const screen2 = document.getElementById('screen-cake');
+
+      screen1.classList.add('hidden');
+      screen2.classList.remove('hidden');
+      screen2.classList.add('stage-reveal');
+    }
+
+    function blowCandle() {
+      if (isCandleBlown) return;
+      isCandleBlown = true;
+
+      const flame = document.getElementById('candle-flame');
+      const smoke = document.getElementById('candle-smoke');
+      const heading = document.getElementById('wish-heading');
+      const blowBtn = document.getElementById('blow-candle-btn');
+
+      // 1. Padamkan nyala api & tampilkan efek asap naik
+      flame.style.opacity = '0';
+      flame.style.transform = 'translateX(-50%) scale(0)';
+      smoke.classList.remove('hidden');
+
+      // 2. Perbarui teks & tombol
+      heading.textContent = 'Yeay! Semoga semua harapan risa terkabul ya... ✨';
+      blowBtn.disabled = true;
+      blowBtn.innerHTML = '<span>Membuka kartu spesial... 💌</span>';
+      blowBtn.classList.add('opacity-80', 'cursor-default');
+
+      // 3. Putar melodi kotak musik & ledakkan confetti pastel
+      playHappyBirthdayMelody();
+      triggerConfetti(160);
+
+      // 4. Transisi mulus ke Layar 3 (Kartu Utama)
+      setTimeout(() => {
+        const screen2 = document.getElementById('screen-cake');
+        const screen3 = document.getElementById('screen-card');
+
+        screen2.classList.add('hidden');
+        screen3.classList.remove('hidden');
+        screen3.classList.add('stage-reveal');
+      }, 2400);
+    }
+
+    // -------------------------------------------------------------------
+    // 4. INTERAKSI KLAIM VOUCHER & HUJAN EMOJI HATI / BINTANG
+    // -------------------------------------------------------------------
+    function launchEmojiShower(count = 28) {
+      const container = document.getElementById('emoji-shower-container');
+      const emojis = ['💖', '💕', '💗', '✨', '⭐', '🩷', '🌟'];
+
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+          const item = document.createElement('div');
+          item.className = 'shower-emoji select-none';
+          item.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+          const left = 6 + Math.random() * 88;
+          const fontSize = 18 + Math.random() * 20;
+          const duration = 2.7 + Math.random() * 1.7;
+          const spin = (Math.random() - 0.5) * 50;
+
+          item.style.left = `${left}vw`;
+          item.style.fontSize = `${fontSize}px`;
+          item.style.setProperty('--dur', `${duration}s`);
+          item.style.setProperty('--spin', `${spin}deg`);
+
+          container.appendChild(item);
+
+          setTimeout(() => {
+            item.remove();
+          }, duration * 1000 + 100);
+        }, i * 80);
+      }
+    }
+
+    function claimVoucher() {
+      const statusBox = document.getElementById('voucher-status-box');
+      const btnLabel = document.getElementById('claim-btn-label');
+
+      launchEmojiShower(30);
+      playVoucherChime();
+
+      if (!isVoucherClaimed) {
+        isVoucherClaimed = true;
+        statusBox.classList.remove('hidden');
+        statusBox.classList.add('stage-reveal');
+        btnLabel.textContent = 'Voucher Berhasil Diklaim 💖';
+      }
+    }
+  </script>
+</body>
+</html>
